@@ -3,20 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module">
-        import * as wu from './wu64.js';
-        const domParser = new DOMParser();
-        const Net = new wu.Net();
-        const ParamsManager = new wu.ParamsManager();
-        console.log(wu)
-
-        onload = async () => {
-          var content = domParser.parseFromString(await Net.fetchFile('pages', `${ParamsManager.getParam('f')}.html`), 'text/html');
-          console.log(content)
-          document.body.append(content.body);
-        }
-    </script>
 </head>
 <body>
+    
+    <script type="module" src="index.js"></script>
 </body>
 </html>

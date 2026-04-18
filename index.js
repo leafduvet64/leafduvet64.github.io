@@ -1,10 +1,17 @@
+    onload = async () => {
+      await fetch('./wu64.js').then(r=>{return r.text()}).then(async t=>{
+        eval(t);
+        var wu = globalThis.modules;
+        await main()
+      });
+    }
 
-const Net = new globalThis.modules.net();
-const ParamsManager = new globalThis.modules.paramsManager();
-
-const domParser = new DOMParser();
-
-onload = () => {
-  var content = domParser.parseFromString(await Net.fetchFile('pages', ParamsManager.getParam('f')), 'text/html');
-  document.body.append(content);
-}
+    const main = async () => {
+      const domParser = new DOMParser();
+      const Net = new wu.Net();
+      const ParamsManager = new wu.ParamsManager();
+      
+      var content = domParser.parseFromString(await Net.fetchFile('pages', `${ParamsManager.getParam('f')}.html`), 'text/html');
+      console.log(content)
+      document.body.append(content.body);
+    }
