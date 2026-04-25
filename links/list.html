@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNS等のリンク一覧</title>
+    <title>リンク一覧</title>
 </head>
 <body>
-    
+    <h1>リンクの一覧</h1>
+    <p id="list"></p>
+    <script type="module">
+        const domParser = new DOMParser();
+        //リンクの一覧を取得
+        const fetchData = await fetch(`https://leafduvet64.github.io/links/links.json`);
+        const jsonData = JSON.parse(await fetchData.text());
+
+        const keys = Object.keys(jsonData);
+        const values = Object.values(jsonData);
+
+        for (var i = 0; i < keys.length; i++) {
+          var content = domParser.parseFromString(`<a href="${values[i]}">${keys[i]}</a>`, 'text/html').body;
+          document.getElementById('list').append(content);
+        }
+    </script>
 </body>
 </html>
