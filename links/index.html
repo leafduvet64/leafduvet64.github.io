@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Links</title>
+    <title>リンクにリダイレクト</title>
 </head>
 <body>
     <script>
-        const params = new URLSearchParams(location.search);
-        const typeParam = params.get('type');
+        //https://leafduvet64.github.io/links/?type=
 
         const getLink = (type) => {
           switch (type) {
@@ -30,6 +29,9 @@
                 throw new Error()
           }
         }
+        
+        const params = new URLSearchParams(location.search);
+        const typeParam = params.get('type');
 
         const linkUrl = getLink(typeParam);
         console.log(linkUrl);
