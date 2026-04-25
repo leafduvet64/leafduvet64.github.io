@@ -6,8 +6,11 @@
     <title>リンクにリダイレクト</title>
 </head>
 <body>
-    <script>
+    <script type="module">
         //https://leafduvet64.github.io/links/?type=
+
+        const data = await fetch(`${location.origin}${location.host}/links/links.json`);
+        console.log(data.body);
 
         const getLink = (type) => {
           switch (type) {
