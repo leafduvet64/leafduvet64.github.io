@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SNS等のリンク一覧</title>
+    <title>リンクにリダイレクト</title>
 </head>
 <body>
-    
+    <script type="module">
+        //https://leafduvet64.github.io/links/?type=
+        const params = new URLSearchParams(location.search);
+        const typeParam = params.get('type');
+
+        //リンクの一覧を取得
+        const fetchData = await fetch(`https://leafduvet64.github.io/links/links.json`);
+        const jsonData = JSON.parse(await fetchData.text());
+
+        const linkUrl = jsonData[typeParam];
+        location.replace(linkUrl);
+        
+    </script>
 </body>
 </html>
