@@ -24,21 +24,18 @@
     ≡◎-ヽJ┴◎      <br>
     <a href="https://aa.kaomoji-copy.com/omaemona/">↑のソース</a>
     </p>
-
     <script type="module">
         const domParser = new DOMParser();
         //リンクの一覧を取得
         const fetchData = await fetch(`https://leafduvet64.github.io/links/links.json`);
         const jsonData = JSON.parse(await fetchData.text());
-        //キーと値
+
         const keys = Object.keys(jsonData);
         const values = Object.values(jsonData);
-        //書き込み
-        onload = () => {
-          for (var i = 0; i < keys.length; i++) {
-            var content = domParser.parseFromString(`<a href="${values[i]}">${keys[i]}</a>`, 'text/html').body;
-            document.getElementById('list').append(content);
-          }
+
+        for (var i = 0; i < keys.length; i++) {
+          var content = domParser.parseFromString(`<a href="${values[i]}">${keys[i]}</a>`, 'text/html').body;
+          document.getElementById('list').append(content);
         }
     </script>
 </body>
