@@ -72,34 +72,60 @@
     </p>
 
     <script type="module">
-        //ユーティリティー系
-        const test = (string = '', index = 0) => string.substring(index, index+1);
-        const title = (string = '') => {
+        //#region 0
+        //SubString
+        const substring = (string = '', index = 0) => string.substring(index, index+1);
+        //toLowerCaseとtoUpperCaseの間みたいなやつ
+        const toTitleCase = (string = '') => {
           var result = '';
           for (var i = 0; i < string.length; i++) {
-            var temp0 = test(string, i);
-            var temp1 = test(string, i-1);
+            var temp0 = substring(string, i);
+            var temp1 = substring(string, i-1);
             result += (i === 0 || temp1 === ' ') ? temp0.toUpperCase() : temp0.toLowerCase();
           }
           return result;
         }
-        globalThis.test = test;
-        globalThis.title = title;
+        globalThis.substring = substring;
+        globalThis.toTitleCase = toTitleCase;
+        //#endregion
 
-        console.log(`Test: ${title('apple banana kiwi a b C 0 1 2')}`);
+        //#region 1
+        //ちょっとでもサーバーへの負荷を減らしたかった
+        const fetchLink = async (url = '') => {
+            const fetchDate = parseInt(localStorage.getItem('link_fetch_date'));
+
+            //fetchDateがなかったら、現在の時間を設定する
+            if(!fetchDate) localStorage.setItem('link_fetch_date', Date.now());
+            //fetchDateが存在するかつ、現在の時間の方が小さいなら処理を中断する
+            if(fetchDate && fetchDate > Date.now()) return JSON.parse(localStorage.getItem('link_fetch_data'));
+
+            //制限の時間を設定する
+            localStorage.setItem('link_fetch_date', Date.now()+5000);
+
+            //fetchする
+            const fetchData = await fetch(`https://leafduvet64.github.io${url}`);
+            const jsonData = JSON.parse(await fetchData.text());
+
+            //ローカルストレージにJSONパースしたjsonDataを設定する
+            localStorage.setItem('link_fetch_data', JSON.stringify(jsonData));
+
+            return jsonData;
+        }
+        globalThis.fetchLink = fetchLink;
+        //#endregion
     </script>
     <script type="module">
+        console.log(`Test: ${toTitleCase('apple banana kiwi a b C 0 1 2')}`);
         const domParser = new DOMParser();
         //リンクの一覧を取得
-        const fetchData = await fetch(`https://leafduvet64.github.io/links/links.json`);
-        const jsonData = JSON.parse(await fetchData.text());
+        const jsonData = await fetchLink('/links/links.json');
         //キーと値
         const keys = Object.keys(jsonData);
         const values = Object.values(jsonData);
         //処理
         for (var i = 0; i < keys.length; i++) {
           //要素
-          var html = `<a class="link" id="${keys[i]}" href="${values[i]}">${title(keys[i])}</a>`;
+          var html = `<a class="link" id="${keys[i]}" href="${values[i]}">${toTitleCase(keys[i])}</a>`;
           var content = domParser.parseFromString(html, 'text/html');
           //書き込み
           document.getElementById('list').append(content.body);
