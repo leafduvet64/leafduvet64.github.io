@@ -91,7 +91,7 @@
 
         //#region 1
         //ちょっとでもサーバーへの負荷を減らしたかった
-        const fetchLink = async (url = '') => {
+        const fetchLink = async (url = '', next = 5000) => {
             const fetchDate = parseInt(localStorage.getItem('link_fetch_date'));
 
             //fetchDateがなかったら、現在の時間を設定する
@@ -100,7 +100,7 @@
             if(fetchDate && fetchDate > Date.now()) return JSON.parse(localStorage.getItem('link_fetch_data'));
 
             //制限の時間を設定する
-            localStorage.setItem('link_fetch_date', Date.now()+5000);
+            localStorage.setItem('link_fetch_date', Date.now() + next);
 
             //fetchする
             const fetchData = await fetch(`https://leafduvet64.github.io${url}`);
@@ -118,7 +118,7 @@
         console.log(`Test: ${toTitleCase('apple banana kiwi a b C 0 1 2')}`);
         const domParser = new DOMParser();
         //リンクの一覧を取得
-        const jsonData = await fetchLink('/links/links.json');
+        const jsonData = await fetchLink('/links/links.json', (1000 * 5));
         //キーと値
         const keys = Object.keys(jsonData);
         const values = Object.values(jsonData);
