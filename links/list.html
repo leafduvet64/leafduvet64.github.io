@@ -26,6 +26,19 @@
     </p>
 
     <script type="module">
+        const test = (string = '', index = 0) => string.substring(index, index+1);
+        const title = (string = '') => {
+          var result = '';
+          for (var i = 0; i < string.length; i++) {
+            var temp0 = test(string, i);
+            var temp1 = test(string, i-1);
+            result += (i === 0 || temp1 === ' ') ? temp0.toUpperCase() : temp0;
+          }
+          return result;
+        }
+
+        console.log(`Test: ${title('apple banana kiwi a b C 0 1 2')}`);
+
         const domParser = new DOMParser();
         //リンクの一覧を取得
         const fetchData = await fetch(`https://leafduvet64.github.io/links/links.json`);
@@ -35,7 +48,7 @@
         const values = Object.values(jsonData);
         //書き込み
         for (var i = 0; i < keys.length; i++) {
-          var content = domParser.parseFromString(`<a href="${values[i]}">${keys[i]}</a>`, 'text/html').body;
+          var content = domParser.parseFromString(`<a id="${keys[i]}" href="${values[i]}">${title(keys[i])}</a>`, 'text/html').body;
           document.getElementById('list').append(content);
         }
     </script>
