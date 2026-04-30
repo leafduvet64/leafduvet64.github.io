@@ -91,6 +91,7 @@
 
         //#region 1
         //ちょっとでもサーバーへの負荷を減らしたかった
+        //localStorageの参考元: https://qiita.com/fe2030/items/4fd6f6e35b34cde08e2d
         const fetchLink = async (url = '', next = 5000) => {
             const fetchDate = parseInt(localStorage.getItem('link_fetch_date'));
 
@@ -106,7 +107,7 @@
             const fetchData = await fetch(`https://leafduvet64.github.io${url}`);
             const jsonData = JSON.parse(await fetchData.text());
 
-            //ローカルストレージにJSONパースしたjsonDataを設定する
+            //localStorageにJSONパースしたjsonDataを設定する
             localStorage.setItem('link_fetch_data', JSON.stringify(jsonData));
 
             return jsonData;
