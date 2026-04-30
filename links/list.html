@@ -72,6 +72,7 @@
     </p>
 
     <script type="module">
+        //ユーティリティー系
         const test = (string = '', index = 0) => string.substring(index, index+1);
         const title = (string = '') => {
           var result = '';
@@ -82,9 +83,12 @@
           }
           return result;
         }
+        globalThis.test = test;
+        globalThis.title = title;
 
         console.log(`Test: ${title('apple banana kiwi a b C 0 1 2')}`);
-
+    </script>
+    <script type="module">
         const domParser = new DOMParser();
         //リンクの一覧を取得
         const fetchData = await fetch(`https://leafduvet64.github.io/links/links.json`);
@@ -92,13 +96,16 @@
         //キーと値
         const keys = Object.keys(jsonData);
         const values = Object.values(jsonData);
-        //書き込み
+        //処理
         for (var i = 0; i < keys.length; i++) {
-          var content = domParser.parseFromString(`<a class="link" id="${keys[i]}" href="${values[i]}">${title(keys[i])}</a>`, 'text/html').body;
-          document.getElementById('list').append(content);
+          //要素
+          var html = `<a class="link" id="${keys[i]}" href="${values[i]}">${title(keys[i])}</a>`;
+          var content = domParser.parseFromString(html, 'text/html');
+          //書き込み
+          document.getElementById('list').append(content.body);
         }
     </script>
-    <script>
+    <script type="module">
         setTimeout(() => {
           document.getElementById('twitter').innerText += '(現X)';
           }, 1000);
