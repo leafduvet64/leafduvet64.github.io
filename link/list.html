@@ -118,7 +118,7 @@
         console.log(`Test: ${toTitleCase('apple banana kiwi a b C 0 1 2')}`);
         const domParser = new DOMParser();
         //リンクの一覧を取得
-        const jsonData = await fetchLink('/links/links.json', (1000 * 5));
+        const jsonData = await fetchLink('/link/links.json', (1000 * 5));
         //キーと値
         const keys = Object.keys(jsonData);
         const values = Object.values(jsonData);
