@@ -97,7 +97,7 @@
             //fetchDateがなかったら、現在の時間を設定する
             if(!fetchDate) localStorage.setItem('link_fetch_date', Date.now());
             //fetchDateが存在するかつ、現在の時間の方が小さいなら処理を中断する
-            if(fetchDate && fetchDate > Date.now()) return JSON.parse(localStorage.getItem('link_fetch_data'));
+            if(fetchDate > Date.now()) return JSON.parse(localStorage.getItem('link_fetch_data'));
 
             //制限の時間を設定する
             localStorage.setItem('link_fetch_date', Date.now() + next);
