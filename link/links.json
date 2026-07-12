@@ -3,6 +3,9 @@
     "displayName": "Youtube",
     "url": "https://www.youtube.com/@leafduvet64"
   },
+
+  "#0": "<br><hr><br>",
+
   "twitch": {
     "displayName": "Twitch",
     "url": "https://www.twitch.tv/leafduvet64"
@@ -24,7 +27,7 @@
     "url": "https://www.instagram.com/leafduvet64"
   },
 
-  "#0": "<br><hr><br>",
+  "#1": "<br><hr><br>",
 
   "github": {
     "displayName": "Github",
@@ -34,6 +37,9 @@
     "displayName": "Gitty",
     "url": "https://gitty-code.com/user/leafduvet64"
   },
+
+  "#2": "<br><hr><br>",
+
   "vrchat": {
     "displayName": "VRChat",
     "url": "https://vrchat.com/home/user/usr_d1b967c4-3201-47af-a316-6cadfad1c4a3"
