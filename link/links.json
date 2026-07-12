@@ -1,11 +1,38 @@
 {
-  "youtube": "https://www.youtube.com/@leafduvet64",
-  "twitch": "https://www.twitch.tv/leafduvet64",
-  "twitter": "https://x.com/leafduvet6401",
-  "karotter": "https://karotter.com/profile/leafduvet64",
-  "bluesky": "https://bsky.app/profile/leafduvet64.bsky.social",
-  "instagram": "https://www.instagram.com/leafduvet64",
-  "github": "https://github.com/leafduvet64",
-  "gitty": "https://gitty-code.com/user/leafduvet64",
-  "vrchat": "https://vrchat.com/home/user/usr_d1b967c4-3201-47af-a316-6cadfad1c4a3"
+  "youtube": {
+    "displayName": "Youtube",
+    "url": "https://www.youtube.com/@leafduvet64"
+  },
+  "twitch": {
+    "displayName": "Twitch",
+    "url": "https://www.twitch.tv/leafduvet64"
+  },
+  "twitter": {
+    "displayName": "Twitter(現X)",
+    "url": "https://x.com/leafduvet6401"
+  },
+  "karotter": {
+    "displayName": "Karotter",
+    "url": "https://karotter.com/profile/leafduvet64"
+  },
+  "bluesky": {
+    "displayName": "Bluesky",
+    "url": "https://bsky.app/profile/leafduvet64.bsky.social"
+  },
+  "instagram": {
+    "displayName": "Instagram",
+    "url": "https://www.instagram.com/leafduvet64"
+  },
+  "github": {
+    "displayName": "Github",
+    "url": "https://github.com/leafduvet64"
+  },
+  "gitty": {
+    "displayName": "Gitty",
+    "url": "https://gitty-code.com/user/leafduvet64"
+  },
+  "vrchat": {
+    "displayName": "VRChat",
+    "url": "https://vrchat.com/home/user/usr_d1b967c4-3201-47af-a316-6cadfad1c4a3"
+  }
 }
