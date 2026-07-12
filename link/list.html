@@ -127,10 +127,14 @@
           //内容の取得
           const id = keys[i];
           const value = values[i];
-          const url = value['url'] ?? '';
-          const displayName = value['displayName'] ?? '';
-          //要素
-          var html = `<a class="link" id="${id}" href="${url}">${displayName}</a>`;
+
+          var html = value;
+          if(typeof value !== "string") {
+            const url = value['url'] ?? '';
+            const displayName = value['displayName'] ?? '';
+            //要素
+            html = `<a class="link" id="${id}" href="${url}">${displayName}</a>`;
+          }
           var content = domParser.parseFromString(html, 'text/html');
           //書き込み
           document.getElementById('list').append(content.body);
