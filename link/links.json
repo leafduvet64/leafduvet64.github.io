@@ -8,7 +8,7 @@
     "url": "https://www.twitch.tv/leafduvet64"
   },
 
-  "#0": "<br><hr><br>",
+  "#0": "<br>",
 
   "twitter": {
     "displayName": "Twitter(現X)",
@@ -27,7 +27,7 @@
     "url": "https://www.instagram.com/leafduvet64"
   },
 
-  "#1": "<br><hr><br>",
+  "#1": "<br>",
 
   "github": {
     "displayName": "Github",
@@ -38,7 +38,7 @@
     "url": "https://gitty-code.com/user/leafduvet64"
   },
 
-  "#2": "<br><hr><br>",
+  "#2": "<br>",
 
   "vrchat": {
     "displayName": "VRChat",
