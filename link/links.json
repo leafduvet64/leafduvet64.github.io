@@ -47,5 +47,12 @@
   "vrchat": {
     "displayName": "VRChat",
     "url": "https://vrchat.com/home/user/usr_d1b967c4-3201-47af-a316-6cadfad1c4a3"
+  },
+
+  "#3": "<br>",
+
+  "linestore": {
+    "displayName": "Line Store",
+    "url": "https://store.line.me/stickershop/author/6424576/"
   }
 }
