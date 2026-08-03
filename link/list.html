@@ -76,23 +76,33 @@
         //ちょっとでもサーバーへの負荷を減らしたかった
         //localStorageの参考元: https://qiita.com/fe2030/items/4fd6f6e35b34cde08e2d
         const fetchLink = async (url = '', next = 5000) => {
+            console.time('fetchLink');
             const fetchDate = parseInt(localStorage.getItem('link_fetch_date'));
 
             //fetchDateがなかったら、現在の時間を設定する
             if(!fetchDate) localStorage.setItem('link_fetch_date', Date.now());
-            //fetchDateが存在するかつ、現在の時間の方が小さいなら処理を中断する
-            if(fetchDate > Date.now()) return JSON.parse(localStorage.getItem('link_fetch_content'));
+            if(fetchDate > Date.now()) {
+                //fetchDateが存在するかつ、現在の時間の方が小さいなら処理を中断する
+                var contents = JSON.parse(localStorage.getItem('link_fetch_content'));
+                console.log(`Local: ${Object.keys(contents).length}`);
+                console.timeEnd('fetchLink');
+                return contents;
+            }
 
             //制限の時間を設定する
-            localStorage.setItem('link_fetch_date', Date.now() + next);
+            const nextDate = Date.now() + next;
+            localStorage.setItem('link_fetch_date', nextDate);
+            console.log(`Next Date: ${nextDate}`);
 
             //fetchする
             const fetchData = await fetch(`https://leafduvet64.github.io${url}`);
             const jsonData = JSON.parse(await fetchData.text());
+            console.log(`Fetch: ${Object.keys(jsonData).length}`);
 
             //localStorageにJSONパースしたjsonDataを設定する
             localStorage.setItem('link_fetch_content', JSON.stringify(jsonData));
 
+            console.timeEnd('fetchLink');
             return jsonData;
         }
         globalThis.fetchLink = fetchLink;
