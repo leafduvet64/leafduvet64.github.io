@@ -1,0 +1,18 @@
+        //#region 0
+        //SubString
+        const substring = (string = '', index = 0) => string.substring(index, index+1);
+        //toLowerCaseとtoUpperCaseの間みたいなやつ
+        const toTitleCase = (string = '') => {
+          var result = '';
+          for (var i = 0; i < string.length; i++) {
+            var temp0 = substring(string, i);
+            var temp1 = substring(string, i-1);
+            result += (i === 0 || temp1 === ' ') ? temp0.toUpperCase() : temp0.toLowerCase();
+          }
+          return result;
+        }
+        globalThis.substring = substring;
+        globalThis.toTitleCase = toTitleCase;
+        //#endregion
+
+        console.log(`Test: ${toTitleCase('apple banana kiwi a b C 0 1 2')}`);
