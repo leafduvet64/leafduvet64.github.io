@@ -54,5 +54,12 @@
   "linestore": {
     "displayName": "Line Store",
     "url": "https://store.line.me/stickershop/author/6424576/"
+  },
+
+  "#4": "<br>",
+
+  "devices": {
+    "displayName": "持ってるデバイス",
+    "url": "https://leafduvet64.github.io/devices.html"
   }
 }
