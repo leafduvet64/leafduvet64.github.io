@@ -59,7 +59,7 @@
   "#4": "<br>",
 
   "devices": {
-    "displayName": "持ってるデバイス",
+    "displayName": "所持しているデバイス",
     "url": "https://leafduvet64.github.io/devices.html"
   }
 }
